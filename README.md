@@ -133,27 +133,34 @@ Soft-delete protects against accidental account removal and preserves audit inte
 
 ---
 
-## PowerShell Identity Verification Scenario
+## PowerShell Identity Attribute Validation Scenario
 
-### Microsoft Graph PowerShell Provisioning Validation
+### Scenario
 
-Microsoft Graph PowerShell was used to verify identity attributes assigned during provisioning.
+Microsoft Graph PowerShell was used to validate identity attributes assigned during provisioning for a test account.
 
-**Command Executed**
+This simulates real-world identity administrator verification workflows used to confirm user attribute accuracy after automated provisioning.
 
-Connect-MgGraph -Scopes "User.ReadWrite.All"
+### Actions Taken
 
-Get-MgUser -UserId "mantis@jasonemmanuel5outlook.onmicrosoft.com" |
-Select DisplayName, UserPrincipalName, Department, JobTitle
+1. Connected to Microsoft Graph using delegated permissions
+2. Queried the user object using Get-MgUser
+3. Retrieved identity attributes from Microsoft Entra ID
+4. Verified department and job title values populated correctly
 
-**Attributes Confirmed**
+### Attributes Confirmed
 
-1. Display Name
-2. User Principal Name
-3. Department
-4. Job Title
+- Display Name
+- User Principal Name
+- Department
+- Job Title
+
+### Principle Applied
+
+Identity attribute validation ensures provisioning accuracy and supports audit readiness during onboarding automation workflows.
 
 ![PowerShell Verification](07-powershell-user-verification.png)
+
 *PowerShell output confirming successful identity attribute configuration*
 
 ---
